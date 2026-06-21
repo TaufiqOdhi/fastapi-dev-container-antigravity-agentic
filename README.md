@@ -123,6 +123,9 @@ pytest tests/e2e/test_tier4_workloads.py -v
             └── mock_notion.json  # Mock Notion API responses
 ```
 
+## Docker Base Image
+`python:3.14-rc-slim`, you can adjust different version of python if needed
+
 ## License
 
 This project is for personal / internal use.
