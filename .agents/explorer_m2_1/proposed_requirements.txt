@@ -1,0 +1,15 @@
+# Proposed requirements.txt for FastAPI Development Container
+
+# Web framework and ASGI server
+fastapi>=0.115.0
+uvicorn>=0.30.0
+python-multipart>=0.0.9
+
+# PDF Parsing
+pypdf>=4.0.0
+
+# Notion Integration
+notion-client>=2.2.1
+
+# Google Antigravity SDK & agy CLI
+google-antigravity

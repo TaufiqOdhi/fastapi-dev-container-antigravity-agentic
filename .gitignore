@@ -1,0 +1,55 @@
+# =========================
+# Python
+# =========================
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# =========================
+# Virtual Environments
+# =========================
+.venv/
+venv/
+env/
+
+# =========================
+# Docker
+# =========================
+.docker/
+
+# =========================
+# IDE / Editors
+# =========================
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# =========================
+# Environment Variables
+# =========================
+.env
+.env.local
+
+# =========================
+# OS Generated
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# Testing
+# =========================
+.pytest_cache/
+htmlcov/
+.coverage
+
+# =========================
+# Project-specific
+# =========================
+tests/mocks/agy_invocation.json
+tests/mocks/mock_data/sample.pdf

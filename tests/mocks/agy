@@ -1,0 +1,46 @@
+#!/usr/bin/env python3
+import sys
+import os
+import json
+import time
+
+log_file = os.environ.get("MOCK_AGY_LOG_FILE", "/workspace/tests/mocks/agy_invocation.json")
+status_code = int(os.environ.get("MOCK_AGY_EXIT_CODE", "0"))
+output_text = os.environ.get("MOCK_AGY_OUTPUT", "Mock AGY Execution Successful")
+error_text = os.environ.get("MOCK_AGY_ERROR", "")
+sleep_time = float(os.environ.get("MOCK_AGY_SLEEP", "0"))
+write_file_path = os.environ.get("MOCK_AGY_WRITE_FILE_PATH", "")
+write_file_content = os.environ.get("MOCK_AGY_WRITE_FILE_CONTENT", "")
+
+invocation = {
+    "args": sys.argv[1:],
+    "stdin": sys.stdin.read() if not sys.stdin.isatty() else "",
+    "env": {k: v for k, v in os.environ.items() if k.startswith("AGY_") or k.startswith("GEMINI_") or k.startswith("MOCK_")}
+}
+
+try:
+    # Ensure directory of log_file exists
+    log_dir = os.path.dirname(log_file)
+    if log_dir:
+        os.makedirs(log_dir, exist_ok=True)
+    with open(log_file, "w") as f:
+        json.dump(invocation, f, indent=2)
+except Exception as e:
+    sys.stderr.write(f"Mock agy failed to write log: {str(e)}\n")
+
+if write_file_path and write_file_content:
+    try:
+        os.makedirs(os.path.dirname(write_file_path), exist_ok=True)
+        with open(write_file_path, "w") as f:
+            f.write(write_file_content)
+    except Exception as e:
+        sys.stderr.write(f"Mock agy failed to write file: {str(e)}\n")
+
+if sleep_time > 0:
+    time.sleep(sleep_time)
+
+if error_text:
+    sys.stderr.write(error_text + "\n")
+
+sys.stdout.write(output_text + "\n")
+sys.exit(status_code)

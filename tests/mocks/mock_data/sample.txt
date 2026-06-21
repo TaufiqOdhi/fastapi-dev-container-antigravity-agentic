@@ -1,0 +1,2 @@
+Implement a simple health check endpoint in FastAPI at /health.
+It should return {"status": "ok"}.
