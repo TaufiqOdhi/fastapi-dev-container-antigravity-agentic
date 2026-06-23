@@ -28,8 +28,7 @@ COPY requirements.txt /workspace/
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Install Antigravity CLI
-RUN pip install --no-cache-dir google-antigravity || \
-    echo "Warning: google-antigravity package not available, agy CLI may need manual installation"
+RUN curl -fsSL https://antigravity.google/cli/install.sh | bash
 
 # Copy the agentic runner script
 COPY run_agent.py /workspace/run_agent.py
