@@ -96,7 +96,7 @@ def run_in_container(container_id, cmd, env=None):
             return 1, "", "File not found"
         return 0, "", ""
         
-    full_cmd = ["docker", "compose", "exec", "dev-container"] + cmd.split()
+    full_cmd = ["docker", "compose", "exec", "-T", "dev-container", "sh", "-c", cmd]
     res = subprocess.run(full_cmd, capture_output=True, text=True, env=env)
     return res.returncode, res.stdout, res.stderr
 

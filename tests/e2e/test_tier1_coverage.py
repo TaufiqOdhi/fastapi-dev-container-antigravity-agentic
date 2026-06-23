@@ -97,7 +97,7 @@ def run_in_container(container_id, cmd, env=None):
             return 1, "", "File not found"
         return 0, "", ""
         
-    full_cmd = ["docker", "compose", "exec", "dev-container"] + cmd.split()
+    full_cmd = ["docker", "compose", "exec", "-T", "dev-container", "sh", "-c", cmd]
     res = subprocess.run(full_cmd, capture_output=True, text=True, env=env)
     return res.returncode, res.stdout, res.stderr
 
@@ -275,7 +275,7 @@ def test_gemini_reflect_to_host(dev_container, mock_env_dirs):
         with open(test_file_path, "w") as f:
             json.dump({"session": "mocked"}, f)
     else:
-        run_in_container(dev_container["container_id"], "sh -c echo '{\"session\": \"mocked\"}' > /root/.gemini/antigravity-cli/container_written.json")
+        run_in_container(dev_container["container_id"], "echo '{\"session\": \"mocked\"}' > /root/.gemini/antigravity-cli/container_written.json")
         
     assert os.path.exists(test_file_path)
     with open(test_file_path, "r") as f:

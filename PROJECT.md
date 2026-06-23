@@ -11,10 +11,10 @@ This project establishes a containerized environment for FastAPI backend develop
 | # | Name | Scope | Dependencies | Status | Conv ID |
 |---|------|-------|--------------|--------|---------|
 | 1 | E2E Test Suite | Design E2E testing infrastructure and implement Tiers 1-4 test cases | None | DONE | 22aeb4a1-acea-4af1-933c-0a9ebc6e7254 |
-| 2 | Docker Environment | Implement Dockerfile, docker-compose.yml, and Python requirements | None | IN_PROGRESS | cd25e655-6501-41be-9629-fd1f0ab5adc8 |
-| 3 | Volume Mounts | Implement volume mounts for SSH, gitconfig, and antigravity-cli | M2 | IN_PROGRESS | cd25e655-6501-41be-9629-fd1f0ab5adc8 |
-| 4 | Agentic Runner | Implement Antigravity CLI and `run_agent.py` text extraction & execution | M2, M3 | IN_PROGRESS | cd25e655-6501-41be-9629-fd1f0ab5adc8 |
-| 5 | E2E & Hardening | Verify all tests pass, and implement white-box adversarial testing (Tier 5) | M1, M2, M3, M4 | IN_PROGRESS | cd25e655-6501-41be-9629-fd1f0ab5adc8 |
+| 2 | Docker Environment | Implement Dockerfile, docker-compose.yml, and Python requirements | None | DONE | cd25e655-6501-41be-9629-fd1f0ab5adc8 |
+| 3 | Volume Mounts | Implement volume mounts for SSH, gitconfig, and antigravity-cli | M2 | DONE | cd25e655-6501-41be-9629-fd1f0ab5adc8 |
+| 4 | Agentic Runner | Implement Antigravity CLI and `run_agent.py` text extraction & execution | M2, M3 | DONE | cd25e655-6501-41be-9629-fd1f0ab5adc8 |
+| 5 | E2E & Hardening | Verify all tests pass, and implement white-box adversarial testing (Tier 5) | M1, M2, M3, M4 | DONE | cd25e655-6501-41be-9629-fd1f0ab5adc8 |
 
 ## Interface Contracts
 ### `run_agent.py` CLI Interface
