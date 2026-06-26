@@ -71,6 +71,8 @@ The `docker-compose.yml` configures the following bind mounts:
 | `HOST_SSH_DIR` | `~/.ssh` | Host path to the SSH directory |
 | `HOST_GITCONFIG` | `~/.gitconfig` | Host path to the `.gitconfig` file |
 | `HOST_GEMINI_DIR` | `~/.gemini/antigravity-cli` | Host path to the Antigravity CLI config directory |
+| `UID` | `1000` | Host user ID to run the container as |
+| `GID` | `1000` | Host group ID to run the container as |
 
 ## Running Tests
 

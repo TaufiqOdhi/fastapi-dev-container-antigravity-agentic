@@ -24,14 +24,26 @@ RUN pip install --no-cache-dir --upgrade pip setuptools wheel
 # Copy requirements file first to leverage Docker build cache
 COPY requirements.txt /workspace/
 
+# Create a non-root user
+ARG UID=1000
+ARG GID=1000
+RUN groupadd -g "${GID}" devuser && \
+    useradd -l -u "${UID}" -g devuser -m devuser -s /bin/bash && \
+    chown -R devuser:devuser /workspace
+
 # Install python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Install Antigravity CLI
+# Switch to the new user
+USER devuser
+ENV HOME=/home/devuser
+ENV PATH="/home/devuser/.local/bin:${PATH}"
+
+# Install Antigravity CLI as devuser
 RUN curl -fsSL https://antigravity.google/cli/install.sh | bash
 
 # Copy the agentic runner script
-COPY run_agent.py /workspace/run_agent.py
+COPY --chown=devuser:devuser run_agent.py /workspace/run_agent.py
 
 # Expose FastAPI default port
 EXPOSE 8000

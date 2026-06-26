@@ -3,7 +3,11 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        UID: ${UID:-1000}
+        GID: ${GID:-1000}
     image: fastapi-dev-container:antigravity
+    user: "${UID:-1000}:${GID:-1000}"
     container_name: dev-container
     env_file:
       - .env
@@ -11,9 +15,9 @@ services:
       - "8000:8000"
     volumes:
       - ./workspace:/workspace
-      - ${HOST_SSH_DIR:-${HOME}/.ssh}:/root/.ssh:ro
-      - ${HOST_GITCONFIG:-${HOME}/.gitconfig}:/root/.gitconfig:ro
-      - ./antigravity-config:/root/.gemini/antigravity-cli
+      - ${HOST_SSH_DIR:-${HOME}/.ssh}:/home/devuser/.ssh:ro
+      - ${HOST_GITCONFIG:-${HOME}/.gitconfig}:/home/devuser/.gitconfig:ro
+      - ./antigravity-config:/home/devuser/.gemini
     environment:
       - PYTHONDONTWRITEBYTECODE=1
       - PYTHONUNBUFFERED=1
