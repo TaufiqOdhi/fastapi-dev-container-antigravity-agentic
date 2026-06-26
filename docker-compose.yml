@@ -17,7 +17,7 @@ services:
       - ./workspace:/workspace
       - ${HOST_SSH_DIR:-${HOME}/.ssh}:/home/devuser/.ssh:ro
       - ${HOST_GITCONFIG:-${HOME}/.gitconfig}:/home/devuser/.gitconfig:ro
-      - ./antigravity-config:/home/devuser/.gemini
+      - ${HOST_GEMINI_DIR:-./antigravity-config}:/home/devuser/.gemini
     environment:
       - PYTHONDONTWRITEBYTECODE=1
       - PYTHONUNBUFFERED=1
