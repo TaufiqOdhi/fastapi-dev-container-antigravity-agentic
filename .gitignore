@@ -53,3 +53,7 @@ htmlcov/
 # =========================
 tests/mocks/agy_invocation.json
 tests/mocks/mock_data/sample.pdf
+antigravity-config/*
+!antigravity-config/.gitkeep
+workspace/*
+!workspace/.gitkeep

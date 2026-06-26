@@ -10,10 +10,10 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - .:/workspace
+      - ./workspace:/workspace
       - ${HOST_SSH_DIR:-${HOME}/.ssh}:/root/.ssh:ro
       - ${HOST_GITCONFIG:-${HOME}/.gitconfig}:/root/.gitconfig:ro
-      - ${HOST_GEMINI_DIR:-${HOME}/.gemini/antigravity-cli}:/root/.gemini/antigravity-cli
+      - ./antigravity-config:/root/.gemini/antigravity-cli
     environment:
       - PYTHONDONTWRITEBYTECODE=1
       - PYTHONUNBUFFERED=1
