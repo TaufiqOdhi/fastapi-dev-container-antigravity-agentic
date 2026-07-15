@@ -61,6 +61,13 @@ The `docker-compose.yml` configures the following bind mounts:
 
 > **Note:** SSH and gitconfig mounts are read-only (`ro`) to protect host credentials. The Gemini config mount is read-write so the CLI can persist session state.
 
+## Optional Configuration
+### Antigravity CLI
+Install the Antigravity CLI using these command inside running container:
+```
+curl -fsSL https://antigravity.google/cli/install.sh | bash
+```
+
 ## Environment Variables
 
 | Variable | Default | Description |

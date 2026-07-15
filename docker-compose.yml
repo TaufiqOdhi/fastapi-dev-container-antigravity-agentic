@@ -18,6 +18,7 @@ services:
       - ${HOST_SSH_DIR:-${HOME}/.ssh}:/home/devuser/.ssh:ro
       - ${HOST_GITCONFIG:-${HOME}/.gitconfig}:/home/devuser/.gitconfig:ro
       - ${HOST_GEMINI_DIR:-./antigravity-config}:/home/devuser/.gemini
+      - ${HOST_LOCAL_DIR:-./local}:/home/devuser/.local
     environment:
       - PYTHONDONTWRITEBYTECODE=1
       - PYTHONUNBUFFERED=1

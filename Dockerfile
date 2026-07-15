@@ -39,9 +39,6 @@ USER devuser
 ENV HOME=/home/devuser
 ENV PATH="/home/devuser/.local/bin:${PATH}"
 
-# Install Antigravity CLI as devuser
-RUN curl -fsSL https://antigravity.google/cli/install.sh | bash
-
 # Copy the agentic runner script
 COPY --chown=devuser:devuser run_agent.py /workspace/run_agent.py
 
